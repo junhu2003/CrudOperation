@@ -42,6 +42,7 @@ namespace CrudOperationApi.Controllers
                 Name = productRequest.Name,
                 Price = productRequest.Price,
                 Category = productRequest.Category,
+                Unit = productRequest.Unit,
             };
             await dbContext.Products.AddAsync(product);
             await dbContext.SaveChangesAsync();
@@ -58,6 +59,7 @@ namespace CrudOperationApi.Controllers
                 product.Name = productRequest.Name;
                 product.Price = productRequest.Price;
                 product.Category = productRequest.Category;
+                product.Unit = productRequest.Unit;
                 
                 await dbContext.SaveChangesAsync();
                 return Ok(product);

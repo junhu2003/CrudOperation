@@ -19,6 +19,7 @@ function loadData() {
                 html += '<td>' + item.name + '</td>';
                 html += '<td>' + item.price + '</td>';
                 html += '<td>' + item.category + '</td>';
+                html += '<td>' + item.unit + '</td>';
                 html += '<td><a href="#" onclick="return getbyID(\'' + item.id + '\')">Edit</a> | <a href="#" onclick="Delele(\'' + item.id + '\')">Delete</a></td>';
                 html += '</tr>';
             });
@@ -41,6 +42,7 @@ function Add() {
         Name: $('#Name').val(),
         Price: $('#Price').val(),
         Category: $('#Category').val(),        
+        Unit: $('#Unit').val(),
     };
     $.ajax({
         url: baseUrl + "/api/products",
@@ -63,6 +65,7 @@ function getbyID(ProductID) {
     $('#Name').css('border-color', 'lightgrey');
     $('#Price').css('border-color', 'lightgrey');
     $('#Category').css('border-color', 'lightgrey');
+    $('#Unit').css('border-color', 'lightgrey');
     
     $.ajax({
         url: baseUrl + "/api/Products/" + ProductID,
@@ -74,6 +77,7 @@ function getbyID(ProductID) {
             $('#Name').val(result.name);
             $('#Price').val(result.price);
             $('#Category').val(result.category);
+            $('#Unit').val(result.unit);
             
             $('#myModal').modal('show');
             $('#btnUpdate').show();
@@ -99,6 +103,7 @@ function Update() {
         Name: $('#Name').val(),
         Price: $('#Price').val(),
         Category: $('#Category').val(),
+        Unit: $('#Unit').val(),
     };
     $.ajax({
         url: baseUrl + "/api/products/" + productId,
@@ -113,6 +118,7 @@ function Update() {
             $('#Name').val("");
             $('#Price').val("");
             $('#Category').val("");
+            $('#Unit').val("");
         },
         error: function (errormessage) {
             alert(errormessage.responseText);
@@ -145,6 +151,7 @@ function clearTextBox() {
     $('#Name').val("");
     $('#Price').val("");
     $('#Category').val("");
+    $('#Unit').val("");
     
     $('#btnUpdate').hide();
     $('#btnAdd').show();
@@ -153,6 +160,7 @@ function clearTextBox() {
     $('#Name').css('border-color', 'lightgrey');
     $('#Price').css('border-color', 'lightgrey');    
     $('#Category').css('border-color', 'lightgrey');
+    $('#Unit').css('border-color', 'lightgrey');
 }
 
 // Function for validation
